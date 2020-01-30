@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 // MATERIAL DESIGN MODULES
 import {
@@ -45,7 +47,8 @@ import { StudentListComponent } from './student-list/student-list.component';
     MatDialogModule,
     BrowserModule,
     APP_ROUTES,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
