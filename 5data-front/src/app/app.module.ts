@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 // MATERIAL DESIGN MODULES
 import {
@@ -20,6 +20,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { Page1Component } from './page1';
 import { Page2Component } from './page2';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentListComponent } from './student-list/student-list.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { Page2Component } from './page2';
     AppComponent,
     HomeComponent,
     Page1Component,
-    Page2Component
+    Page2Component,
+    StudentListComponent
   ],
   imports: [
     MatToolbarModule,
@@ -41,7 +44,8 @@ import { Page2Component } from './page2';
     MatListModule,
     MatDialogModule,
     BrowserModule,
-    APP_ROUTES
+    APP_ROUTES,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
