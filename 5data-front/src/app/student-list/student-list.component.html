@@ -1,0 +1,13 @@
+<mat-card class="mat-whiteframe-2dp" *ngFor="let student of students">
+  <mat-card-title>
+    <span>{{ student["First Name"] }} {{ student["Last Name"] }}</span>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="contact-info">
+      email&nbsp;:&nbsp; {{ student.Email }}
+    </div>
+    <div class="contact-info">
+      Email Supinfo&nbsp;:&nbsp;{{ student["Mail Supinfo"]}}
+    </div>
+  </mat-card-content>
+</mat-card>
