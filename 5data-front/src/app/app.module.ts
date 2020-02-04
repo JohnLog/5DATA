@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
 
 // MATERIAL DESIGN MODULES
 import {
@@ -15,22 +15,25 @@ import {
   MatIconModule,
   MatListModule,
   MatDialogModule
-} from '@angular/material';
+} from "@angular/material";
 
-import { APP_ROUTES } from './app.routes';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home';
-import { Page1Component } from './page1';
-import { Page2Component } from './page2';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StudentListComponent } from './student-list/student-list.component';
+import { ChartModule } from "angular-highcharts";
 
+import { APP_ROUTES } from "./app.routes";
+import { AppComponent } from "./app.component";
+import { HomeComponent } from "./home";
+import { TimeEvolutionComponent } from "./time-evolution";
+import { Page2Component } from "./page2";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { StudentListComponent } from "./student-list/student-list.component";
+
+import { HighchartsService } from "./service/highcharts.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    Page1Component,
+    TimeEvolutionComponent,
     Page2Component,
     StudentListComponent
   ],
@@ -49,8 +52,9 @@ import { StudentListComponent } from './student-list/student-list.component';
     APP_ROUTES,
     BrowserAnimationsModule,
     HttpClientModule,
+    ChartModule
   ],
-  providers: [],
+  providers: [HighchartsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

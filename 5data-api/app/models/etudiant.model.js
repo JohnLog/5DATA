@@ -1,30 +1,33 @@
 const mongoose = require('mongoose');
 
-const EtudiantSchema = mongoose.Schema({
+const EtudiantSchema = mongoose.Schema(
+  {
     Id: Number,
-    "First Name": String,
-    "Last Name": String,
+    First_Name: String,
+    Last_Name: String,
     Email: String,
     Gender: String,
     Country: String,
     City: String,
-    "Birth Date": Date,
-    "Origin Region": String,
-    "Origin School": String,
-    "Subscription Date": Date,
-    "Exit Date": Date,
-    "Hire Date": Date,
-    "Study Domain": String,
+    Birth_Date: Date,
+    Origin_Region: String,
+    Origin_School: String,
+    Subscription_Date: Date,
+    Exit_Date: Date,
+    Hire_Date: Date,
+    Study_Domain: String,
     Mobility: String,
-    "General Mean": Number,
-    "Interruption Reason": String,
+    General_Mean: Number,
+    Interruption_Reason: String,
     Graduation: Boolean,
     Presence: String,
-    "Internship Pro": String,
-    "Contract Type": String,
-    "Recrutment Nbr": Number,
-    "Mail Supinfo": String,
-    "Recrutment Salon": Boolean
-});
+    Internship_Pro: String,
+    Contract_Type: String,
+    Recrutment_Nbr: Number,
+    Mail_Supinfo: String,
+    Recrutment_Salon: Boolean
+  },
+  { collection: 'etudiant' }
+);
 
 module.exports = mongoose.model('Etudiant', EtudiantSchema);
