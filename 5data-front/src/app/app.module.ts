@@ -23,7 +23,7 @@ import { APP_ROUTES } from "./app.routes";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home";
 import { TimeEvolutionComponent } from "./time-evolution";
-import { Page2Component } from "./page2";
+import { CampusComponent } from "./campus";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { StudentListComponent } from "./student-list/student-list.component";
 
@@ -34,7 +34,7 @@ import { HighchartsService } from "./service/highcharts.service";
     AppComponent,
     HomeComponent,
     TimeEvolutionComponent,
-    Page2Component,
+    CampusComponent,
     StudentListComponent
   ],
   imports: [

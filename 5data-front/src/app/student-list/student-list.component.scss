@@ -1,3 +1,10 @@
+section {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (min-width: 768px) {
   :host(.wide) mat-card,
   :host(.wide) mat-list-item {
@@ -86,9 +93,10 @@ mat-card-actions button[mat-raised-button] {
   margin: 5px;
 }
 
-.hl {
+.name {
   background-color: orange;
   color: white;
+  padding: 3px;
 }
 
 .skills {

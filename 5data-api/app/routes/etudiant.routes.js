@@ -7,6 +7,8 @@ module.exports = app => {
   // Retrieve a single Etudiant with etudiantId
   app.get('/etudiants/get/:etudiantId', etudiants.findOne);
 
+  app.get('/etudiants/success', etudiants.getSuccessfulStudent);
+
   app.get('/etudiants/CountByYear/Gender', etudiants.CountByYearGroupedByGender);
   app.get('/etudiants/CountByYear/Domain', etudiants.CountByYearGroupedByDomain);
 };

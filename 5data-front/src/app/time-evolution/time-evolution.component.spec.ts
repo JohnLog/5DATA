@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Page1Component } from './page1.component';
+import { TimeEvolutionComponent } from './time-evolution.component';
 
-describe('Page1Component', () => {
-  let component: Page1Component;
-  let fixture: ComponentFixture<Page1Component>;
+describe('TimeEvolutionComponent', () => {
+  let component: TimeEvolutionComponent;
+  let fixture: ComponentFixture<TimeEvolutionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Page1Component ]
+      declarations: [ TimeEvolutionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Page1Component);
+    fixture = TestBed.createComponent(TimeEvolutionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

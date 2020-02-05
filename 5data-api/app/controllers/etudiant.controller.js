@@ -14,6 +14,20 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.getSuccessfulStudent = (req, res) => {
+  Etudiant.find()
+    .then(etudiants => {
+      etudiants.sort((a, b) => (parseFloat(a.General_Mean) < parseFloat(b.General_Mean)) ? 1 : -1)
+      res.send(etudiants.slice(0,20));
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || 'error in the api'
+      });
+    });
+};
+
 // Find a single etudiant with a etudiantId
 exports.findOne = (req, res) => {
   Etudiant.findById(req.params.etudiantId)
@@ -101,3 +115,4 @@ exports.CountByYearGroupedByDomain = (req, res) => {
     });
   });
 };
+

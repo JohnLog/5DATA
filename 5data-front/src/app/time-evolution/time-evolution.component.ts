@@ -50,23 +50,23 @@ export class TimeEvolutionComponent implements OnInit {
   ngOnInit() {
 
     // CHART 1 : STUDENT EVOLUTION BY GENDER AND BY YEAR
-    const serieM = {
-      name: "male students",
-      data: []
-    };
-    const serieF = {
-      name: "female students",
-      data: []
-    };
-    const serieT = {
-      name: "total students",
-      data: []
-    };
-    
     this._http
     .get("http://localhost:3000/etudiants/countByYear/Gender")
     .subscribe(countByYear => {
+      const serieM = {
+        name: "male students",
+        data: []
+      };
+      const serieF = {
+        name: "female students",
+        data: []
+      };
+      const serieT = {
+        name: "total students",
+        data: []
+      };
       let opt = JSON.parse(JSON.stringify(this.options));
+      opt.title.text = "hired student by year and by gender"
       this.countByYear = countByYear;
 
       for (const data of this.countByYear) {
@@ -91,27 +91,28 @@ export class TimeEvolutionComponent implements OnInit {
     });
   
     // CHART 2 : STUDENT EVOLUTION BY DOMAIN AND BY YEAR
-    const serieB = {
-      name: "Business students",
-      data: []
-    };
-    const serieC = {
-      name: "Communication students",
-      data: []
-    };
-    const serieD = {
-      name: "Design students",
-      data: []
-    };
-    const serieI = {
-      name: "IT students",
-      data: []
-    };
-    
     this._http
     .get("http://localhost:3000/etudiants/countByYear/Domain")
     .subscribe(countByYear => { 
+      const serieB = {
+        name: "Business students",
+        data: []
+      };
+      const serieC = {
+        name: "Communication students",
+        data: []
+      };
+      const serieD = {
+        name: "Design students",
+        data: []
+      };
+      const serieI = {
+        name: "IT students",
+        data: []
+      };
+      
       let opt = JSON.parse(JSON.stringify(this.options));
+      opt.title.text = "hired student by year and by domain"
       this.countByYear = countByYear;
 
       for (const data of this.countByYear) {
@@ -127,15 +128,10 @@ export class TimeEvolutionComponent implements OnInit {
       }
       opt.plotOptions.series.pointStart = this.countByYear[0]._id.year;
 
-      serieT.data = serieM.data.map(function (count, id) {
-        return count + serieF.data[id];
-      });
-
       opt.series.push(serieB);
       opt.series.push(serieC);
       opt.series.push(serieD);
       opt.series.push(serieI);
-
 
       this.highcharts.createChart(this.chartEl2.nativeElement, opt);
     });

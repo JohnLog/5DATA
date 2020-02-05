@@ -18,4 +18,21 @@ export class StudentListComponent implements OnInit {
         this.students = students;
       });
   }
+
+  allStudent(event: Event) {
+    console.log('sltA');
+    this._http
+      .get("http://localhost:3000/etudiants/get/")
+      .subscribe(students => {
+        this.students = students;
+      });
+  }
+  successfulStudent(event: Event) {
+    console.log('sltZ');
+    this._http
+      .get("http://localhost:3000/etudiants/success/")
+      .subscribe(students => {
+        this.students = students;
+      });
+  }
 }
