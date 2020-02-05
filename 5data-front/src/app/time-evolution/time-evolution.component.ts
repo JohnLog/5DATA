@@ -48,92 +48,93 @@ export class TimeEvolutionComponent implements OnInit {
   @ViewChild("charts2", { static: true }) public chartEl2: ElementRef;
 
   ngOnInit() {
-
     // CHART 1 : STUDENT EVOLUTION BY GENDER AND BY YEAR
     this._http
-    .get("http://localhost:3000/etudiants/countByYear/Gender")
-    .subscribe(countByYear => {
-      const serieM = {
-        name: "male students",
-        data: []
-      };
-      const serieF = {
-        name: "female students",
-        data: []
-      };
-      const serieT = {
-        name: "total students",
-        data: []
-      };
-      let opt = JSON.parse(JSON.stringify(this.options));
-      opt.title.text = "hired student by year and by gender"
-      this.countByYear = countByYear;
+      .get("http://localhost:3000/etudiants/countByYear/Gender")
+      .subscribe(countByYear => {
+        const serieM = {
+          name: "male students",
+          data: []
+        };
+        const serieF = {
+          name: "female students",
+          data: []
+        };
+        const serieT = {
+          name: "total students",
+          data: []
+        };
+        const opt = JSON.parse(JSON.stringify(this.options));
+        opt.title.text = "hired student by year and by gender";
+        this.countByYear = countByYear;
 
-      for (const data of this.countByYear) {
-        if (data._id.gender == "Male") {
-          serieM.data.push(data.count);
-        } else if (data._id.gender == "Female") {
-          serieF.data.push(data.count);
+        for (const data of this.countByYear) {
+          if (data._id.gender == "Male") {
+            serieM.data.push(data.count);
+          } else if (data._id.gender == "Female") {
+            serieF.data.push(data.count);
+          }
         }
-      }
-      opt.plotOptions.series.pointStart = this.countByYear[0]._id.year;
+        opt.plotOptions.series.pointStart = this.countByYear[0]._id.year;
 
-      serieT.data = serieM.data.map(function (count, id) {
-        return count + serieF.data[id];
+        serieT.data = serieM.data.map(function(count, id) {
+          return count + serieF.data[id];
+        });
+
+        opt.series.push(serieM);
+        opt.series.push(serieF);
+        opt.series.push(serieT);
+
+        this.highcharts.createChart(this.chartEl1.nativeElement, opt);
       });
 
-      opt.series.push(serieM);
-      opt.series.push(serieF);
-      opt.series.push(serieT);
-
-
-      this.highcharts.createChart(this.chartEl1.nativeElement, opt);
-    });
-  
     // CHART 2 : STUDENT EVOLUTION BY DOMAIN AND BY YEAR
     this._http
-    .get("http://localhost:3000/etudiants/countByYear/Domain")
-    .subscribe(countByYear => { 
-      const serieB = {
-        name: "Business students",
-        data: []
-      };
-      const serieC = {
-        name: "Communication students",
-        data: []
-      };
-      const serieD = {
-        name: "Design students",
-        data: []
-      };
-      const serieI = {
-        name: "IT students",
-        data: []
-      };
-      
-      let opt = JSON.parse(JSON.stringify(this.options));
-      opt.title.text = "hired student by year and by domain"
-      this.countByYear = countByYear;
+      .get("http://localhost:3000/etudiants/countByYear/Domain")
+      .subscribe(countByYear => {
+        const serieB = {
+          name: "Business students",
+          data: []
+        };
+        const serieC = {
+          name: "Communication students",
+          data: []
+        };
+        const serieD = {
+          name: "Design students",
+          data: []
+        };
+        const serieI = {
+          name: "IT students",
+          data: []
+        };
 
-      for (const data of this.countByYear) {
-        if (data._id.domain == "Business") {
-          serieB.data.push(data.count);
-        } else if (data._id.domain == "Communication") {
-          serieC.data.push(data.count);
-        } else if (data._id.domain == "Design") {
-          serieD.data.push(data.count);
-        } else if (data._id.domain == "IT") {
-          serieI.data.push(data.count);
-        } 
-      }
-      opt.plotOptions.series.pointStart = this.countByYear[0]._id.year;
+        const opt = JSON.parse(JSON.stringify(this.options));
+        opt.title.text = "hired student by year and by domain";
+        opt.chart.type = "area";
+        opt.plotOptions.area = {};
+        opt.plotOptions.area.stacking = "normal";
+        this.countByYear = countByYear;
 
-      opt.series.push(serieB);
-      opt.series.push(serieC);
-      opt.series.push(serieD);
-      opt.series.push(serieI);
+        for (const data of this.countByYear) {
+          if (data._id.domain == "Business") {
+            serieB.data.push(data.count);
+          } else if (data._id.domain == "Communication") {
+            serieC.data.push(data.count);
+          } else if (data._id.domain == "Design") {
+            serieD.data.push(data.count);
+          } else if (data._id.domain == "IT") {
+            serieI.data.push(data.count);
+          }
+        }
+        opt.plotOptions.series.pointStart = this.countByYear[0]._id.year;
 
-      this.highcharts.createChart(this.chartEl2.nativeElement, opt);
-    });
+        opt.series.push(serieB);
+        opt.series.push(serieC);
+        opt.series.push(serieD);
+        opt.series.push(serieI);
+
+        this.highcharts.createChart(this.chartEl2.nativeElement, opt);
+      });
   }
 }

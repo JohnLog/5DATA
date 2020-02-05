@@ -20,7 +20,6 @@ export class StudentListComponent implements OnInit {
   }
 
   allStudent(event: Event) {
-    console.log('sltA');
     this._http
       .get("http://localhost:3000/etudiants/get/")
       .subscribe(students => {
@@ -28,7 +27,6 @@ export class StudentListComponent implements OnInit {
       });
   }
   successfulStudent(event: Event) {
-    console.log('sltZ');
     this._http
       .get("http://localhost:3000/etudiants/success/")
       .subscribe(students => {
